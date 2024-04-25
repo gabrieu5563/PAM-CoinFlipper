@@ -10,7 +10,8 @@
             <Label
                 Text="Cara ou coroa"
                 Style="{StaticResource Headline}"
-                HorizontalTextAlignment="Center"/>
+                HorizontalTextAlignment="Center"
+                TextColor="#4f4f4f"/>
 
             <Image
                 Source="cara.png"
@@ -18,12 +19,15 @@
                 x:Name="imgOut"/>
 
             <Label
+                x:Name="moedaOut"
+                TextColor="#4f4f4f"
                 HorizontalTextAlignment="Center"
-                x:Name="moedaOut"/>
+                />
 
             <Picker
                 x:Name="moedaSelect"
                 Title="Escolha cara ou coroa"
+                TextColor="#4f4f4f"
                 SelectedIndexChanged="moedaSelect_SelectedIndexChanged">
                 <Picker.ItemsSource>
                     <x:Array Type="{x:Type x:String}">
@@ -36,7 +40,8 @@
             <Button
                 x:Name="moedaBtn"
                 Text="Girar a moeda"
-                Clicked="moedaBtn_Clicked"/>
+                Clicked="moedaBtn_Clicked"
+                BackgroundColor="#4f4f4f"/>
 
 
         </VerticalStackLayout>

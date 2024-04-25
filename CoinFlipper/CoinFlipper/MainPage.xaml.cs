@@ -2,7 +2,6 @@
 {
     public partial class MainPage : ContentPage
     {
-        int selectMoeda;
         String stringMoeda = String.Empty;
 
         public MainPage()
@@ -13,7 +12,6 @@
         private void moedaSelect_SelectedIndexChanged(object sender, EventArgs e)
         {
             stringMoeda = (String)moedaSelect.SelectedItem;
-            selectMoeda = moedaSelect.SelectedIndex;
         }
 
         private void moedaBtn_Clicked(object sender, EventArgs e)
@@ -26,26 +24,24 @@
                 DisplayAlert("Cara ou coroa", "Selecione cara ou coroa para prosseguir", "ok");
             } else
             {
-                if ( rand == selectMoeda)
+                if ( rand == moedaSelect.SelectedIndex)
                 {
                     moedaOut.Text = "Acertou! " + stringMoeda;
                     imgOut.Source = stringMoeda + ".png";
                 }
                 else
                 {
-                    if (selectMoeda == 0)
+                    if (moedaSelect.SelectedIndex == 0)
                     {
                         imgOut.Source = "coroa.png";
-                        moedaOut.Text = "Errou! Coroa";
+                        moedaOut.Text = "Errou! coroa";
                     } else
                     {
                         imgOut.Source = "cara.png";
-                        moedaOut.Text = "Errou! Cara";
+                        moedaOut.Text = "Errou! cara";
                     }
                 }
-
             }
-
         }
     }
 }
