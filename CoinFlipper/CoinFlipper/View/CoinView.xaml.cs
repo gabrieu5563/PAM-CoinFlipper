@@ -1,10 +1,11 @@
+using Microsoft.Maui.Controls;
 using CoinFlipper.ViewModel;
 
 namespace CoinFlipper.View
 {
-    public partial class CoinView1 : ContentPage
+    public partial class CoinView : ContentPage
     {
-        public CoinView1()
+        public CoinView()
         {
             InitializeComponent();
             BindingContext = new CoinViewModel();

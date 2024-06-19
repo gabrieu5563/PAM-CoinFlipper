@@ -1,10 +1,13 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CoinFlipper.Models;
+using System.Windows.Input;
+
 
 
 namespace CoinFlipper.ViewModel
@@ -20,20 +23,28 @@ namespace CoinFlipper.ViewModel
         [ObservableProperty]
         private string escolha;
 
+        public ICommand JogarCommand { get; }
+
+        public CoinViewModel()
+        {
+            JogarCommand = new RelayCommand(Jogar);
+        }
 
         public void Jogar()
         {
-            Coin coin = new Coin();
-            coin.Jogar();
-
-            //Restultado = Escolha == LadoSorteado ? "Parabéns, você acertou" : "Você perdeu"
-            if(Escolha == coin.LadoSorteado)
-            {
-                Resultado = "Você ganhou";
+            if (String.IsNullOrEmpty(Escolha)) {
+                App.Current.MainPage.DisplayAlert("Cara ou coroa", "Selecione cara ou coroa para prosseguir", "ok");
             } else
             {
-                Resultado = "Você perdeu";
+                Coin coin = new Coin();
+                coin.Jogar();
+
+                Resultado = Escolha == coin.LadoSorteado ? "Parabéns, você acertou" : "Você perdeu";
+
+                Imagem = coin.LadoSorteado == "cara" ? "cara.png" : "coroa.png";
             }
+
+            
         }
     }
 }
